@@ -29,17 +29,11 @@ cursor = conexão.cursor()
 comando = f'UPDATE moedas SET valor = {cotacao_dolar} WHERE Nome_moeda = "USD"'
 cursor.execute(comando)
 conexão.commit()
-
-
 comando = f'UPDATE moedas SET valor = {cotacao_euro} WHERE Nome_moeda = "EUR"'
 cursor.execute(comando)
 conexão.commit()
-
-
 comando = f'UPDATE moedas SET valor = {cotacao_bitcoin} WHERE Nome_moeda = "BTC"'
 cursor.execute(comando)
 conexão.commit()
-
-
 cursor.close()
 conexão.close()
