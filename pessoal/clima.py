@@ -25,6 +25,7 @@ conexão = mysql.connector.connect(
 )
 
 cursor = conexão.cursor()
+
 #Adicionar cidade
 '''comando = f'INSERT INTO informações (Cidade, Temperatura, Condição) VALUES ("{cidade}", {temperatura}, "{descrição}")'
 cursor.execute(comando)
