@@ -26,6 +26,7 @@ requi = requests.get(link)
 dados = requi.json()
 #print(dados)
 
+#Conexão para remover itens do banco de dados
 conexão = mysql.connector.connect(
     host='localhost',
     user='root',
@@ -39,6 +40,7 @@ cursor.execute(comando)
 conexão.commit()
 cursor.close()
 conexão.close()
+
 #Pegar dado e adicionar no banco de dados
 while a != 7:
     conexão = mysql.connector.connect(
@@ -49,10 +51,15 @@ while a != 7:
 )
 
     cursor = conexão.cursor()
+
+    #Mostra a localização
+    cidade = dados['name']
+    estado = dados['state']
+    junção = f'{cidade},{estado}'
+
     #Mostrar o dia
     dia = dados['data'][a]['date_br']
     #print(dia)
-
 
     #Mostrar humidade
     humidademin = dados['data'][a]['humidity']['min']
@@ -121,7 +128,7 @@ while a != 7:
     #print(dia_datapor[11::])
 
     #Adicionar dados
-    comando = f'INSERT INTO elementos (Dia, Humidade_min, Humidade_max, Pressão, Precipitação, Probabilidade_chuva, Velocidade_Vento_min, Velocidade_Vento_max, Velocidade_Vento_media, Direção_Vento, Índicie_UV, Sensação_termica_min, Sensação_termica_max, Descrição, Temperatura_min, Temperatura_max, Nascer_Sol, Por_Sol) VALUES ("{dia}", "{humidademin}%", "{humidademax}%", "{pressão}hPa", "{precipitação}mm", "{probachu}%", "{ventomin}Km/h", "{ventomax}Km/h", "{ventomedia}km/h", "{ventodire}", "{uv}", "{sensaçãomin}°C", "{sensaçãomax}°C", "{condição}", "{temperaturamin}°C", "{temperaturamax}°C", "{dia_datanasc[11::]}", "{dia_datapor[11::]}")'
+    comando = f'INSERT INTO elementos (Localização, Dia, Humidade_min, Humidade_max, Pressão, Precipitação, Probabilidade_chuva, Velocidade_Vento_min, Velocidade_Vento_max, Velocidade_Vento_media, Direção_Vento, Índicie_UV, Sensação_termica_min, Sensação_termica_max, Descrição, Temperatura_min, Temperatura_max, Nascer_Sol, Por_Sol) VALUES ("{junção}", "{dia}", "{humidademin}%", "{humidademax}%", "{pressão}hPa", "{precipitação}mm", "{probachu}%", "{ventomin}Km/h", "{ventomax}Km/h", "{ventomedia}km/h", "{ventodire}", "{uv}", "{sensaçãomin}°C", "{sensaçãomax}°C", "{condição}", "{temperaturamin}°C", "{temperaturamax}°C", "{dia_datanasc[11::]}", "{dia_datapor[11::]}")'
     cursor.execute(comando)
     conexão.commit()
     cursor.close()
