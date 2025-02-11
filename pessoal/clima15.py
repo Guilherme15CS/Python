@@ -26,20 +26,29 @@ requi = requests.get(link)
 dados = requi.json()
 #print(dados)
 
-#Conexão para remover itens do banco de dados
-conexão = mysql.connector.connect(
+
+#Parte para remover dias anteriores
+for c in range (2, 7):
+    conexão = mysql.connector.connect(
     host='localhost',
     user='root',
     password='',
     database='clima15'
-)
+    )
+    cursor = conexão.cursor()
+    dia2 = dados['data'][a]['date_br']
+    dia2 = datetime.strptime(dia2, "%d/%m/%Y")
+    data = timedelta(days=c)
+    deletar = dia2 - data
+    deletar = datetime.date(deletar)
+    deletar = deletar.strftime("%d/%m/%Y")
+    deletar = str(deletar)
 
-cursor = conexão.cursor()
-comando = 'TRUNCATE elementos'
-cursor.execute(comando)
-conexão.commit()
-cursor.close()
-conexão.close()
+    comando = f'DELETE FROM elementos WHERE dia = "{deletar}"'
+    cursor.execute(comando)
+    conexão.commit()
+    cursor.close()
+    conexão.close()
 
 #Pegar dado e adicionar no banco de dados
 while a != 7:
@@ -49,8 +58,13 @@ while a != 7:
     password='',
     database='clima15'
 )
-
+    dia = dados['data'][a]['date_br']
     cursor = conexão.cursor()
+
+    comando = f'DELETE FROM elementos WHERE dia = "{dia}"'
+    cursor.execute(comando)
+    conexão.commit()
+
 
     #Mostra a localização
     cidade = dados['name']

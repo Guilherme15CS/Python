@@ -6,7 +6,7 @@ red = '\033[1;31m'
 fim = '\033[m'
 
 #Escolha de números
-print('Resolução de equação do 2ºGrau')
+print('Resolução de equação do 2º Grau')
 a = int(input('Qual valor de "a": '))
 b = int(input('Qual valor de "b": '))
 c = int(input('Qual valor de "c": '))
@@ -112,6 +112,3 @@ elif escolha == 8:
         print(f'Delta é {delta}, a raíz é {x}')
     else:
         print(f'Como delta é {delta} (Negativo) não existe raíz')
-
-
-
