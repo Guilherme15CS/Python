@@ -57,11 +57,12 @@ while a != 7:
     user='root',
     password='',
     database='clima15'
-)
-    dia = dados['data'][a]['date_br']
+    )
     cursor = conexão.cursor()
 
-    comando = f'DELETE FROM elementos WHERE dia = "{dia}"'
+    dia3 = dados['data'][a]['date_br']
+
+    comando = f'DELETE FROM elementos WHERE dia = "{dia3}"'
     cursor.execute(comando)
     conexão.commit()
 
@@ -124,7 +125,7 @@ while a != 7:
     #Nascer do Sol
     nascersol = dados['data'][a]['sun']['sunrise']
     dia_datanasc = f"{dia} {nascersol}"
-    #print(dia_data)
+    #print(dia_datanasc)
     dia_datanasc = datetime.strptime(dia_datanasc, "%d/%m/%Y %H:%M:%S")
     fuso = timedelta(hours=3)
     dia_datanasc = dia_datanasc - fuso

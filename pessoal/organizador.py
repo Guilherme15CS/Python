@@ -12,7 +12,7 @@ while True:
         mulher += 1
     idade = int(input('Qual é a sua idade? '))
     resp = input('Deseja continuar? [S/N] ').upper()
-    if resp != 'S' and resp != 'N':
+    while resp != 'S' and resp != 'N':
         print('-=' * 20)
         print('Resposta inválida, tente novamente')
         resp = input('Deseja continuar? [S/N] ').upper()     

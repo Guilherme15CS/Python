@@ -6,11 +6,11 @@ cotacoes = requests.get("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL
 cotacoes = cotacoes.json()
 #print(cotacoes)
 cotacao_dolar = cotacoes['USDBRL']['bid']
-#print(f'A cotação atual do Dólar é {cotacao_dolar}')
+print(f'A cotação atual do Dólar é {cotacao_dolar}')
 cotacao_euro = cotacoes['EURBRL']['bid']
-#print(f'A cotação do Euro é {cotacao_euro}')
+print(f'A cotação do Euro é {cotacao_euro}')
 cotacao_bitcoin = cotacoes['BTCBRL']['bid']
-#print(f'A cotação do Bitcoin é {cotacao_bitcoin}')
+print(f'A cotação do Bitcoin é {cotacao_bitcoin}')
 
 conexão = mysql.connector.connect(
     host='localhost',
