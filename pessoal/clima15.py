@@ -28,7 +28,7 @@ dados = requi.json()
 
 
 #Parte para remover dias anteriores
-for c in range (2, 7):
+for c in range (2, 50):
     conexão = mysql.connector.connect(
     host='localhost',
     user='root',
