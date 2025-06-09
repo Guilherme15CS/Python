@@ -111,7 +111,7 @@ def agente_planejador(topico, lancamentos_buscados):
 def agente_redator(topico, plano_de_post):
     redator = Agent(
         name="agente_redator",
-        model="gemini-2.5-pro-preview-03-25",
+        model="gemini-2.0-flash",
         instruction="""
             Você é um Redator Criativo especializado em criar posts virais para redes sociais.
             Você escreve posts para a empresa Alura, a maior escola online de tecnologia do Brasil.
@@ -134,7 +134,7 @@ def agente_redator(topico, plano_de_post):
 def agente_revisor(topico, rascunho_gerado):
     revisor = Agent(
         name="agente_revisor",
-        model="gemini-2.5-pro-preview-03-25",
+        model="gemini-2.0-flash",
         instruction="""
             Você é um Editor e Revisor de Conteúdo meticuloso, especializado em posts para redes sociais, com foco no Instagram.
             Por ter um público jovem, entre 18 e 30 anos, use um tom de escrita adequado.
